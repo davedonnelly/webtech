@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSW Cyber Security</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome the BSW Group Cyber Security Website</h1>
+        <h2>Protecting Your Digital World</h2><br>
+    </header>
+    <div class="container">
+        <aside class="sidebar-left">
+            <img src="images/group.png"><br>
+            <h3>Contents</h3><br>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="safe.html">Staying safe online</a></li>
+                    <li><a href="phishing.html">Phishing</a></li>
+                    <li><a href="threat.html">Threat Intelligence</a></li>
+                    <li><a href="info.html">Useful information</a></li>
+                    <li><a href="report.html">Report an Incident</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h1>Understanding Phishing</h1>
+            <h3>Phishing is a prevalent cyber threat that involves the use of deceptive tactics to trick individuals into divulging sensitive information such as usernames, passwords, credit card numbers, or other personal data. It typically occurs through fraudulent emails, text messages, or websites that impersonate legitimate entities, such as banks, social media platforms, or government agencies. In a phishing attack, the attacker masquerades as a trusted source to manipulate the victim into taking a specific action, such as clicking on a malicious link or providing confidential information.</h3>
+    
+            <h3>The term "phishing" is a play on the word "fishing," as attackers cast out bait in the form of deceptive messages to lure unsuspecting users. These messages often evoke a sense of urgency or fear, such as warnings of account suspension, security breaches, or enticing offers, to prompt the recipient to act impulsively without carefully scrutinizing the legitimacy of the communication.</h3>
+    
+            <h3>Phishing attacks can take various forms, including:</h3>
+    
+            <ol>
+            <li><strong>Email Phishing:</strong> This is the most common form of phishing, where attackers send fraudulent emails that appear to be from reputable organizations, such as banks or online retailers. These emails typically contain a call-to-action urging the recipient to click on a link or download an attachment, which may lead to a fake website designed to steal login credentials or install malware on the victim's device.</li>
+            <li><strong>Spear Phishing:</strong> Spear phishing is a targeted form of phishing that involves customized messages tailored to specific individuals or organizations. Attackers gather information about their targets from sources such as social media, company websites, or data breaches to craft personalized emails that are more convincing and difficult to detect.</li>
+            <li><strong>Smishing:</strong> Smishing, or SMS phishing, involves fraudulent text messages sent to mobile phone users. Similar to email phishing, smishing messages contain deceptive content and often instruct the recipient to click on a link or call a phone number to verify account information or claim a prize.</li>
+            <li><strong>Vishing:</strong> Vishing, or voice phishing, relies on phone calls to deceive victims into disclosing sensitive information. Attackers use automated voice messages or live callers posing as legitimate representatives of banks, government agencies, or tech support services to trick individuals into revealing personal or financial details over the phone.</li>
+            </ol>
+    
+            <h3>Phishing attacks can have severe consequences for individuals and organizations, including financial loss, identity theft, data breaches, and reputational damage. To protect against phishing, it is essential to:</h3>
+    
+            <ul>
+            <li><strong>Be Vigilant:</strong> Exercise caution when receiving unsolicited emails, text messages, or phone calls, especially those requesting sensitive information or urging immediate action.</li>
+            <li><strong>Verify the Sender:</strong> Verify the authenticity of messages by checking the sender's email address, domain, or phone number. Be wary of misspellings, suspicious URLs, or unfamiliar sender names.</li>
+            <li><strong>Think Before Clicking:</strong> Hover over links to preview the destination URL before clicking. Avoid clicking on links or downloading attachments from unknown or untrusted sources.</li>
+            <li><strong>Keep Software Updated:</strong> Maintain up-to-date antivirus software, web browsers, and operating systems to protect against known vulnerabilities exploited by phishing attacks.</li>
+            <li><strong>Educate Users:</strong> Educate users about phishing risks and best practices for identifying and reporting suspicious messages. Provide training and awareness programs to help individuals recognize phishing attempts and respond appropriately.</li>
+            </ul>
+    
+            <h3>By staying informed and adopting proactive measures, individuals and organizations can reduce the likelihood of falling victim to phishing attacks and mitigate the associated risks to their security and privacy.</h3>
+            <center><img src="images/3872690.jpg" alt="Cyber Security" height="475" width="500"></center>      
+        </main>
+        <aside class="sidebar-right">
+            <h3>National Cyber Security Centre Feed.</h3>
+            <div id="rss-feed"></div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function(){                    
+                    var rssFeedUrl = "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml";
+                                        
+                    var counter = 0;
+                                        
+                    $.ajax({
+                        url: rssFeedUrl,
+                        dataType: "xml",
+                        success: function(data) {                            
+                            $(data).find("item").each(function() {
+                                if (counter >= 5) {
+                                    return false;
+                                }
+                                
+                                var title = $(this).find("title").text();
+                                var link = $(this).find("link").text();
+                                var description = $(this).find("description").text();
+                                var pubDate = $(this).find("pubDate").text();
+                                                                
+                                var itemHTML = `
+                                    <div class="rss-item">
+                                        <h2><a href="${link}" target="_blank">${title}</a></h2>
+                                        <p>${description}</p>
+                                        <p><small>Published on ${pubDate}</small></p>
+                                    </div>
+                                `;
+                                                                
+                                $("#rss-feed").append(itemHTML);
+                                
+                                counter++; 
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching RSS feed:", error);
+                            $("#rss-feed").html("Error fetching RSS feed.");
+                        }
+                    });
+                });
+            </script>
+        </aside>
+    </div>
+    <footer>
+        <a href=https://www.tilhill.com target="_blank"> <img src="images/tilhill.jpg"></a>
+        <a href=https://www.dickbrothers.co.uk target="_blank"> <img src="images/dickbrothers.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/timbersolutions.jpg"></a>
+        <a href=https://www.maelor.co.uk target="_blank"> <img src="images/maelor.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/bswtimber.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/energy.jpg"></a>
+        <a href=https://www.bayramtimber.co.uk target="_blank"><img src="images/bayram.jpg"></a>
+        <p>&copy; 2024 Dave Donnelly. All rights reserved.</p>
+        <a href="https://www.freepik.com/free-vector/phishing-account-concept-illustration_8239218.htm#fromView=search&page=1&position=0&uuid=5c80feba-87dd-4c73-8f53-c9b640a1216d?sign-up=google">Image by storyset</a> on Freepik
+    </footer>
+</body>
+</html>

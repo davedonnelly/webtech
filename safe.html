@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSW Cyber Security</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome the BSW Group Cyber Security Website</h1>
+        <h2>Protecting Your Digital World</h2><br>
+    </header>
+    <div class="container">
+        <aside class="sidebar-left">
+            <img src="images/group.png"><br>
+            <h3>Contents</h3><br>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="safe.html">Staying safe online</a></li>
+                    <li><a href="phishing.html">Phishing</a></li>
+                    <li><a href="threat.html">Threat Intelligence</a></li>
+                    <li><a href="info.html">Useful information</a></li>
+                    <li><a href="report.html">Report an Incident</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h1>Staying Safe Online</h1>
+            <h3>Staying safe online is crucial in today's digital age where we heavily rely on the internet for communication, information, and entertainment. With the increasing prevalence of cyber threats such as hacking, phishing, identity theft, and malware, it's essential to adopt proactive measures to protect ourselves and our sensitive information. Here are some key strategies and best practices for staying safe online:</h3>
+        
+            <ol>
+                <li><strong>Use Strong Passwords:</strong> Ensure that your passwords are strong and unique for each online account. Use a combination of letters, numbers, and special characters, and avoid using easily guessable information such as your name or birthdate. Consider using a reputable password manager to securely store and manage your passwords.</li>
+                <li><strong>Enable Two-Factor Authentication (2FA):</strong> Whenever possible, enable two-factor authentication for your accounts. This adds an extra layer of security by requiring a second form of verification, such as a code sent to your phone, in addition to your password.</li>
+                <li><strong>Keep Software Updated:</strong> Regularly update your operating system, web browsers, and software applications to patch any security vulnerabilities. Many cyber attacks exploit known weaknesses in outdated software, so keeping everything up-to-date is essential for staying protected.</li>
+                <li><strong>Be Cautious of Phishing Attempts:</strong> Be wary of unsolicited emails, messages, or phone calls asking for personal information or urging you to click on links or download attachments. Phishing scams often masquerade as legitimate entities to trick users into revealing sensitive information or installing malware. Verify the sender's identity and think twice before sharing any personal data.</li>
+                <li><strong>Secure Your Devices:</strong> Secure your devices with antivirus software and firewalls to protect against malware and other malicious threats. Additionally, consider encrypting your data and enabling device lock screens with strong passcodes or biometric authentication.</li>
+                <li><strong>Practice Safe Browsing Habits:</strong> Be cautious when visiting websites and only use secure, encrypted connections (HTTPS) for sensitive activities such as online banking or shopping. Avoid clicking on suspicious links or downloading files from untrustworthy sources, as they may contain malware or lead to phishing sites.</li>
+                <li><strong>Protect Your Personal Information:</strong> Limit the amount of personal information you share online, especially on social media platforms. Be mindful of the privacy settings on your accounts and only share information with trusted contacts. Avoid oversharing details such as your address, phone number, or financial information.</li>
+                <li><strong>Monitor Your Accounts:</strong> Regularly monitor your bank accounts, credit reports, and online transactions for any suspicious activity. Report any unauthorized charges or unusual behavior to your financial institution immediately.</li>
+                <li><strong>Educate Yourself and Others:</strong> Stay informed about the latest cyber threats and security best practices. Educate yourself and your family members about online safety and encourage them to practice good habits, such as avoiding public Wi-Fi networks and being cautious of unsolicited messages.</li>
+                <li><strong>Backup Your Data:</strong> Regularly backup your important files and data to an external hard drive or cloud storage service. This ensures that you can recover your information in case of data loss due to a cyber attack or hardware failure.</li>
+            </ol>
+        
+            <p>By following these tips and staying vigilant, you can minimize the risk of falling victim to cyber attacks and protect yourself against online threats. Remember that staying safe online is an ongoing process that requires attention and diligence, but the effort is well worth it to safeguard your digital security and privacy.</p>
+            <center><img src="images/6453220.jpg" alt="Cyber Security" height="475" width="750"></center>         
+        </main>
+        <aside class="sidebar-right">
+            <h3>National Cyber Security Centre Feed.</h3>
+            <div id="rss-feed"></div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function(){                    
+                    var rssFeedUrl = "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml";
+                                        
+                    var counter = 0;
+                                        
+                    $.ajax({
+                        url: rssFeedUrl,
+                        dataType: "xml",
+                        success: function(data) {                            
+                            $(data).find("item").each(function() {
+                                if (counter >= 5) {
+                                    return false;
+                                }
+                                
+                                var title = $(this).find("title").text();
+                                var link = $(this).find("link").text();
+                                var description = $(this).find("description").text();
+                                var pubDate = $(this).find("pubDate").text();
+                                                                
+                                var itemHTML = `
+                                    <div class="rss-item">
+                                        <h2><a href="${link}" target="_blank">${title}</a></h2>
+                                        <p>${description}</p>
+                                        <p><small>Published on ${pubDate}</small></p>
+                                    </div>
+                                `;
+                                                                
+                                $("#rss-feed").append(itemHTML);
+                                
+                                counter++;
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching RSS feed:", error);
+                            $("#rss-feed").html("Error fetching RSS feed.");
+                        }
+                    });
+                });
+            </script>
+        </aside>
+    </div>
+    <footer>
+        <a href=https://www.tilhill.com target="_blank"> <img src="images/tilhill.jpg"></a>
+        <a href=https://www.dickbrothers.co.uk target="_blank"> <img src="images/dickbrothers.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/timbersolutions.jpg"></a>
+        <a href=https://www.maelor.co.uk target="_blank"> <img src="images/maelor.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/bswtimber.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/energy.jpg"></a>
+        <a href=https://www.bayramtimber.co.uk target="_blank"><img src="images/bayram.jpg"></a>
+        <p>&copy; 2024 Dave Donnelly. All rights reserved.</p>
+        <a href="https://www.freepik.com/free-vector/abstract-technology-ssl-illustration_21743426.htm#fromView=search&page=3&position=14&uuid=36356e79-95f0-40ac-b227-69a65abc960a">Image by freepik</a>
+    </footer>
+</body>
+</html>

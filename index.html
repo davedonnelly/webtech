@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSW Cyber Security</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome the BSW Group Cyber Security Website</h1>
+        <h2>Protecting Your Digital World</h2><br>
+    </header>
+    <div class="container">
+        <aside class="sidebar-left">
+            <img src="images/group.png"><br>
+            <h3>Contents</h3><br>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="safe.html">Staying safe online</a></li>
+                    <li><a href="phishing.html">Phishing</a></li>
+                    <li><a href="threat.html">Threat Intelligence</a></li>
+                    <li><a href="info.html">Useful information</a></li>                    
+                    <li><a href="report.html">Report an Incident</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h1>What is Cyber Security</h1>
+            <h3>Cybersecurity is an essential aspect of today's digital landscape, aimed at safeguarding systems,
+                 networks, and data from unauthorized access and malicious activities. In our interconnected world, 
+                 where businesses and individuals rely heavily on digital technologies, cybersecurity is paramount
+                  for protecting sensitive information and maintaining privacy.</h3>
+
+            <h3>With the rise of sophisticated cyber threats like malware, phishing, and ransomware, cybersecurity
+                has become more crucial than ever. It involves proactive measures such as encryption, firewalls, and
+                regular security updates to mitigate potential risks and respond swiftly to security incidents.</h3>
+             
+            <h3>Beyond technical solutions, cybersecurity also involves educating users about safe online practices
+            and fostering a culture of security awareness. Collaboration among experts, policymakers, businesses, and 
+            ndividuals is key to staying ahead of evolving cyber threats and ensuring the resilience of our digital infrastructure.</h3>
+             
+            <h3>In essence, cybersecurity is vital for maintaining trust and stability in the digital age. By prioritizing
+                cybersecurity measures, we can protect our digital assets and ensure a safer online environment for everyone.</h3>
+
+                <center><img src="images/90448.jpg" alt="Cyber Security" height="475" width="750"></center> 
+
+                
+        </main>
+        <aside class="sidebar-right">
+            <h3>National Cyber Security Centre Feed.</h3>
+            <div id="rss-feed"></div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function(){                    
+                    var rssFeedUrl = "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml";
+                                       
+                    var counter = 0;                    
+                    
+                    $.ajax({
+                        url: rssFeedUrl,
+                        dataType: "xml",
+                        success: function(data) {                            
+                            $(data).find("item").each(function() {
+                                if (counter >= 5) {
+                                    return false;
+                                }
+                                
+                                var title = $(this).find("title").text();
+                                var link = $(this).find("link").text();
+                                var description = $(this).find("description").text();
+                                var pubDate = $(this).find("pubDate").text();                                
+                                
+                                var itemHTML = `
+                                    <div class="rss-item">
+                                        <h2><a href="${link}" target="_blank">${title}</a></h2>
+                                        <p>${description}</p>
+                                        <p><small>Published on ${pubDate}</small></p>
+                                    </div>
+                                `;                                
+                            
+                                $("#rss-feed").append(itemHTML);
+                                
+                                counter++;
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching RSS feed:", error);
+                            $("#rss-feed").html("Error fetching RSS feed.");
+                        }
+                    });
+                });
+            </script>
+        </aside>
+    </div>
+    <footer>
+        <a href=https://www.tilhill.com target="_blank"> <img src="images/tilhill.jpg"></a>
+        <a href=https://www.dickbrothers.co.uk target="_blank"> <img src="images/dickbrothers.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/timbersolutions.jpg"></a>
+        <a href=https://www.maelor.co.uk target="_blank"> <img src="images/maelor.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/bswtimber.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/energy.jpg"></a>
+        <a href=https://www.bayramtimber.co.uk target="_blank"><img src="images/bayram.jpg"></a>
+        <p>&copy; 2024 Dave Donnelly. All rights reserved.</p>
+        <a href="https://www.freepik.com/free-vector/cyber-security-concept_4239575.htm#query=cyber%20security&position=0&from_view=keyword&track=ais&uuid=6664f18c-f384-448a-b0a7-776adb3ec5f6">Image by rawpixel.com</a> on Freepik</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSW Cyber Security</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome the BSW Group Cyber Security Website</h1>
+        <h2>Protecting Your Digital World</h2><br>
+    </header>
+    <div class="container">
+        <aside class="sidebar-left">
+            <img src="images/group.png"><br>
+            <h3>Contents</h3><br>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="safe.html">Staying safe online</a></li>
+                    <li><a href="phishing.html">Phishing</a></li>
+                    <li><a href="threat.html">Threat Intelligence</a></li>
+                    <li><a href="info.html">Useful information</a></li>
+                    <li><a href="report.html">Report an Incident</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h1>20 Cyber Security Websites</h1><br>
+             <ol>
+                <li><a href="https://krebsonsecurity.com/">Krebs on Security</a><br>A blog run by Brian Krebs, providing investigative journalism and breaking news about cybersecurity.</li><br>
+                <li><a href="https://www.cisa.gov/">The Cybersecurity and Infrastructure Security Agency (CISA)</a><br>The official website of the U.S. government agency responsible for enhancing the nation's cybersecurity and resilience to cyber threats.</li><br>
+                <li><a href="https://www.sans.org/">The SANS Institute</a><br>A leading organization providing training, certification, and research in cybersecurity, offering resources for professionals and students.</li><br>
+                <li><a href="https://www.darkreading.com/">Dark Reading</a><br>A comprehensive news and information portal focused on cybersecurity, covering topics such as threat intelligence, data breaches, and security strategies.</li><br>
+                <li><a href="https://www.cyberscoop.com/">CyberScoop</a><br>A media outlet delivering news and analysis on cybersecurity topics, including cyber threats, policy developments, and industry trends.</li><br>
+                <li><a href="https://thehackernews.com/">The Hacker News</a><br>An online platform providing the latest news and insights about hacking, cybersecurity vulnerabilities, and technology.</li><br>
+                <li><a href="https://threatpost.com/">Threatpost</a><br>A leading source for cybersecurity news, offering analysis, insights, and research on emerging threats and vulnerabilities.</li><br>
+                <li><a href="https://www.securityweek.com/">SecurityWeek</a><br>An online publication covering cybersecurity news, insights, and analysis, catering to professionals, researchers, and enthusiasts.</li><br>
+                <li><a href="https://www.csoonline.com/">CSO Online</a><br>A website providing news, analysis, and best practices for chief information security officers (CISOs) and security professionals.</li><br>
+                <li><a href="https://www.infosecurity-magazine.com/">Infosecurity Magazine</a><br>A leading publication covering cybersecurity news, insights, and analysis, with articles on topics such as threat intelligence and data protection.</li><br>
+                <li><a href="https://www.securitymagazine.com/">Security Magazine</a><br>A comprehensive resource offering news, trends, and insights on security-related topics, including cybersecurity, physical security, and risk management.</li><br>
+                <li><a href="https://www.cybersecurity-insiders.com/">Cybersecurity Insiders</a><br>A website providing cybersecurity news, reports, and analysis, catering to security professionals, executives, and decision-makers.</li><br>
+                <li><a href="https://nakedsecurity.sophos.com/">Naked Security by Sophos</a><br>A blog offering insights, analysis, and advice on cybersecurity topics, with articles covering malware, privacy, and internet security.</li><br>
+                <li><a href="https://www.helpnetsecurity.com/">Help Net Security</a><br>An online platform providing news, analysis, and research on cybersecurity topics, including threat intelligence, data breaches, and compliance.</li><br>
+                <li><a href="https://thecyberwire.com/">The CyberWire</a><br>A leading cybersecurity news source offering daily podcasts, news briefs, and analysis on cybersecurity topics, including threat intelligence and cyber defense.</li><br>
+                <li><a href="https://cybersecurityventures.com/">Cybersecurity Ventures</a><br>A research and advisory firm providing insights, reports, and analysis on cybersecurity trends, with a focus on industry forecasts and market intelligence.</li><br>
+                <li><a href="https://securelist.com/">Securelist by Kaspersky</a><br>A website offering research, analysis, and insights on cyber threats and malware, with articles authored by cybersecurity experts from Kaspersky Lab.</li><br>
+                <li><a href="https://www.fortinet.com/blog">Fortinet Blog</a><br>A blog maintained by Fortinet, providing insights, analysis, and best practices on cybersecurity topics, including threat intelligence, network security, and cloud security.</li><br>
+                <li><a href="https://www.crowdstrike.com/blog/">CrowdStrike Blog</a><br>A blog offering insights, analysis, and research on cybersecurity topics, including threat intelligence, endpoint security, and incident response, authored by experts from CrowdStrike.</li><br>
+                <li><a href="https://www.fireeye.com/current-threats.html">FireEye Threat Research</a><br>A resource providing research, reports, and analysis on cyber threats, with insights into the latest threat actors, attack techniques, and security trends, from FireEye.</li><br>
+             </ol> 
+             <center><img src="images/security.jpg" alt="Cyber Security" height="475" width="750"></center>                     
+        </main>
+        <aside class="sidebar-right">
+            <h3>National Cyber Security Centre Feed.</h3>
+            <div id="rss-feed"></div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function(){                    
+                    var rssFeedUrl = "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml";                    
+                    
+                    var counter = 0;                    
+                    
+                    $.ajax({
+                        url: rssFeedUrl,
+                        dataType: "xml",
+                        success: function(data) {                            
+                            $(data).find("item").each(function() {
+                                if (counter >= 5) {
+                                    return false;
+                                }
+                                
+                                var title = $(this).find("title").text();
+                                var link = $(this).find("link").text();
+                                var description = $(this).find("description").text();
+                                var pubDate = $(this).find("pubDate").text();                       
+                                
+                                var itemHTML = `
+                                    <div class="rss-item">
+                                        <h2><a href="${link}" target="_blank">${title}</a></h2>
+                                        <p>${description}</p>
+                                        <p><small>Published on ${pubDate}</small></p>
+                                    </div>
+                                `;
+                                
+                                $("#rss-feed").append(itemHTML);
+                                
+                                counter++;
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching RSS feed:", error);
+                            $("#rss-feed").html("Error fetching RSS feed.");
+                        }
+                    });
+                });
+            </script>
+        </aside>
+    </div>
+    <footer>
+        <a href=https://www.tilhill.com target="_blank"> <img src="images/tilhill.jpg"></a>
+        <a href=https://www.dickbrothers.co.uk target="_blank"> <img src="images/dickbrothers.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/timbersolutions.jpg"></a>
+        <a href=https://www.maelor.co.uk target="_blank"> <img src="images/maelor.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/bswtimber.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/energy.jpg"></a>
+        <a href=https://www.bayramtimber.co.uk target="_blank"><img src="images/bayram.jpg"></a>
+        <p>&copy; 2024 Dave Donnelly. All rights reserved.</p>
+        <a href="https://www.freepik.com/free-photo/security-shield-privacy-protection-confidentiality-concept_17433939.htm#fromView=search&page=2&position=1&uuid=7c569972-c5da-4a58-9835-9d3368dc023a">Image by rawpixel.com on Freepik</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSW Cyber Security</title>
+    <link rel="stylesheet" href="styles.css">
+        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init(fmaeriO0rhtlL3jNf); // EmailJS public key
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome the BSW Group Cyber Security Website</h1>
+        <h2>Protecting Your Digital World</h2><br>
+    </header>
+    <div class="container">
+        <aside class="sidebar-left">
+            <img src="images/group.png"><br>
+            <h3>Contents</h3><br>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="safe.html">Staying safe online</a></li>
+                    <li><a href="phishing.html">Phishing</a></li>
+                    <li><a href="threat.html">Threat Intelligence</a></li>
+                    <li><a href="info.html">Useful information</a></li>
+                    <li><a href="report.html">Report an Incident</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h1>Report Cyber Security Incident</h1><br>
+            <h3>If you think any your may have been compromised or you have recived a suspicious emailplease let us know as soon as possible using the form below.</h3>
+            <form id="incidentForm">
+                <label for="incidentType">Incident Type:</label>
+                <select id="incidentType" name="incidentType">
+                    <option value="phishing">Phishing</option>
+                    <option value="malware">Malware</option>
+                    <option value="data_breach">Data Breach</option>
+                    <option value="ransomware">Ransomware</option>
+                    <option value="other">Other</option>
+                </select><br><br>
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
+
+                <label for="impact">Impact:</label><br>
+                <input type="text" id="impact" name="impact"><br><br>
+
+                <label for="date">Date:</label><br>
+                <input type="date" id="date" name="date"><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+
+            <script>
+                document.getElementById("incidentForm").addEventListener("submit", function(event) {
+                    event.preventDefault();                    
+                    
+                    var formData = {
+                        incidentType: document.getElementById("incidentType").value,
+                        description: document.getElementById("description").value,
+                        impact: document.getElementById("impact").value,
+                        date: document.getElementById("date").value
+                    };
+                    
+                    emailjs.send("default_service", templatei51hlcl, formData)
+                        .then(function(response) {
+                            console.log("Email sent successfully!", response);
+                            alert("Your report has been submitted successfully!");
+                        }, function(error) {
+                            console.error("Error sending email:", error);
+                            alert("An error occurred while submitting your report. Please try again later.");
+                        });
+                });
+            </script>
+            <br><center><img src="images/report.jpg" alt="Cyber Security" height="475" width="750"></center>
+        </main>
+        <aside class="sidebar-right">
+            <h3>National Cyber Security Centre Feed.</h3>
+            <div id="rss-feed"></div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    var rssFeedUrl = "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml";                 
+                    var counter = 0;                    
+                    $.ajax({
+                        url: rssFeedUrl,
+                        dataType: "xml",
+                        success: function(data) {
+                                $(data).find("item").each(function() {
+                                if (counter >= 5) {
+                                    return false;
+                                }                                
+                                var title = $(this).find("title").text();
+                                var link = $(this).find("link").text();
+                                var description = $(this).find("description").text();
+                                var pubDate = $(this).find("pubDate").text();                                
+                                var itemHTML = `
+                                    <div class="rss-item">
+                                        <h
+
+2><a href="${link}" target="_blank">${title}</a></h2>
+                                        <p>${description}</p>
+                                        <p><small>Published on ${pubDate}</small></p>
+                                    </div>
+                                `;                      
+                                
+                                $("#rss-feed").append(itemHTML);
+                                
+                                counter++;
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching RSS feed:", error);
+                            $("#rss-feed").html("Error fetching RSS feed.");
+                        }
+                    });
+                });
+            </script>
+        </aside>
+    </div>
+    <footer>
+        <a href=https://www.tilhill.com target="_blank"> <img src="images/tilhill.jpg"></a>
+        <a href=https://www.dickbrothers.co.uk target="_blank"> <img src="images/dickbrothers.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/timbersolutions.jpg"></a>
+        <a href=https://www.maelor.co.uk target="_blank"> <img src="images/maelor.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/bswtimber.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/energy.jpg"></a>
+        <a href=https://www.bayramtimber.co.uk target="_blank"><img src="images/bayram.jpg"></a>
+        <p>&copy; 2024 Dave Donnelly. All rights reserved.</p>
+        <a href="https://www.freepik.com/free-photo/html-css-collage-concept-with-person_36295465.htm#fromView=search&page=3&position=52&uuid=7c569972-c5da-4a58-9835-9d3368dc023a">Image by freepik</a>
+    </footer>
+</body>
+</html>

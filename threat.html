@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSW Cyber Security</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome the BSW Group Cyber Security Website</h1>
+        <h2>Protecting Your Digital World</h2><br>
+    </header>
+    <div class="container">
+        <aside class="sidebar-left">
+            <img src="images/group.png"><br>
+            <h3>Contents</h3><br>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="safe.html">Staying safe online</a></li>
+                    <li><a href="phishing.html">Phishing</a></li>
+                    <li><a href="threat.html">Threat Intelligence</a></li>
+                    <li><a href="info.html">Useful information</a></li>
+                    <li><a href="report.html">Report an Incident</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h1>Understanding Threat Intelligence</h1>
+        <h3>Threat intelligence is a critical component of modern cybersecurity practices, providing organizations with valuable insights into potential cyber threats and vulnerabilities. It encompasses the collection, analysis, and dissemination of information about emerging and existing cyber threats, as well as the actors behind them. By leveraging threat intelligence, organizations can better understand the tactics, techniques, and procedures (TTPs) used by adversaries, enabling them to proactively defend against cyber attacks and mitigate risks to their systems and data.</h3>
+    
+        <h3>One of the primary goals of threat intelligence is to enhance situational awareness by providing organizations with timely and relevant information about potential threats to their networks and assets. This includes data on known malware variants, vulnerabilities in software and systems, indicators of compromise (IOCs), and emerging attack trends. By staying informed about the latest threats and trends, organizations can prioritize their security efforts and allocate resources effectively to address the most pressing risks.</h3>
+    
+        <h3>Threat intelligence is also essential for improving incident response capabilities. By integrating threat intelligence feeds into security operations, organizations can detect and respond to security incidents more quickly and effectively. Threat intelligence can help organizations identify anomalous behavior, correlate security events across their environment, and take proactive measures to contain and mitigate threats before they escalate into full-blown breaches.</h3>
+    
+        <h3>Moreover, threat intelligence plays a crucial role in supporting decision-making processes at all levels of an organization. Executives can use threat intelligence to make informed decisions about risk management strategies, resource allocation, and investments in security technologies. Security analysts can leverage threat intelligence to conduct more targeted investigations, identify patterns of attack, and develop countermeasures to protect against specific threats.</h3>
+    
+        <h3>Threat intelligence is not limited to technical indicators of compromise; it also encompasses insights into the motivations, capabilities, and intentions of threat actors. This includes information about cybercriminal organizations, nation-state actors, hacktivist groups, and insider threats. Understanding the tactics, techniques, and goals of different threat actors can help organizations anticipate potential threats and tailor their defenses accordingly.</h3>
+    
+        <h3>Effective threat intelligence requires a combination of automated tools, human expertise, and collaboration with external partners and industry peers. Automated threat intelligence platforms can ingest, analyze, and prioritize vast amounts of data from diverse sources, such as open-source intelligence (OSINT), commercial feeds, and internal security telemetry. Human analysts play a crucial role in contextualizing and validating threat intelligence, identifying false positives, and providing actionable insights to stakeholders.</h3>
+    
+        <h3>Furthermore, collaboration and information sharing are essential aspects of threat intelligence. Organizations can benefit from sharing threat intelligence with trusted partners, industry groups, and government agencies to gain a broader perspective on emerging threats and trends. Initiatives such as Information Sharing and Analysis Centers (ISACs) facilitate collaboration and coordination among organizations in specific sectors or regions, enabling them to collectively defend against common threats.</h3>
+    
+        <h3>In conclusion, threat intelligence is a vital component of modern cybersecurity strategies, helping organizations anticipate, detect, and respond to cyber threats effectively. By leveraging threat intelligence to enhance situational awareness, improve incident response capabilities, and support decision-making processes, organizations can strengthen their overall security posture and better protect their systems, data, and stakeholders from cyber attacks.</h3>
+        <center><img src="images/58515.jpg" alt="Cyber Security" height="475" width="750"></center>        
+        </main>
+        <aside class="sidebar-right">
+            <h3>National Cyber Security Centre Feed.</h3>
+            <div id="rss-feed"></div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function(){                    
+                    var rssFeedUrl = "https://www.ncsc.gov.uk/api/1/services/v1/report-rss-feed.xml";
+                                        
+                    var counter = 0;
+                                        
+                    $.ajax({
+                        url: rssFeedUrl,
+                        dataType: "xml",
+                        success: function(data) {
+                            $(data).find("item").each(function() {
+                                    if (counter >= 5) {
+                                    return false; 
+                                }
+                                
+                                var title = $(this).find("title").text();
+                                var link = $(this).find("link").text();
+                                var description = $(this).find("description").text();
+                                var pubDate = $(this).find("pubDate").text();
+                                                                
+                                var itemHTML = `
+                                    <div class="rss-item">
+                                        <h2><a href="${link}" target="_blank">${title}</a></h2>
+                                        <p>${description}</p>
+                                        <p><small>Published on ${pubDate}</small></p>
+                                    </div>
+                                `;
+                                                                
+                                $("#rss-feed").append(itemHTML);
+                                
+                                counter++; 
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching RSS feed:", error);
+                            $("#rss-feed").html("Error fetching RSS feed.");
+                        }
+                    });
+                });
+            </script>
+        </aside>
+    </div>
+    <footer>
+        <a href=https://www.tilhill.com target="_blank"> <img src="images/tilhill.jpg"></a>
+        <a href=https://www.dickbrothers.co.uk target="_blank"> <img src="images/dickbrothers.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/timbersolutions.jpg"></a>
+        <a href=https://www.maelor.co.uk target="_blank"> <img src="images/maelor.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/bswtimber.jpg"></a>
+        <a href=https://www.bsw.co.uk target="_blank"> <img src="images/energy.jpg"></a>
+        <a href=https://www.bayramtimber.co.uk target="_blank"><img src="images/bayram.jpg"></a>
+        <p>&copy; 2024 Dave Donnelly. All rights reserved.</p>
+        <a href="https://www.freepik.com/free-ai-image/hacker-hood-stealing-data-from-server-room-cybercrime-concept_126661124.htm#page=3&query=cyber%20security&position=21&from_view=keyword&track=ais&uuid=6664f18c-f384-448a-b0a7-776adb3ec5f6">Image by flatart on Freepik</a>
+    </footer>
+</body>
+</html>
