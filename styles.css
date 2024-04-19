@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0);gimp
+    background-color: rgba(255, 255, 255, 0);
     color: black;
     text-align: center;
     padding: 20px 0;
@@ -43,7 +43,7 @@ iframe {
 
  footer {
     margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0);gimp   
+    background-color: rgba(255, 255, 255, 0);
     color: black;
     text-align: center;
     padding: 10px 0;
