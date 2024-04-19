@@ -6,9 +6,7 @@ body {
 }
 
 header {
-    background-image: url(images/background.jpg);
-    background-repeat: no-repeat;
-    background-size: auto;
+    background-color: rgba(255, 255, 255, 0);gimp
     color: black;
     text-align: center;
     padding: 20px 0;
@@ -44,9 +42,8 @@ iframe {
 }
 
  footer {
-    background-image: url(images/background.jpg);
     margin-top: 20px;
-    background-color: white   
+    background-color: rgba(255, 255, 255, 0);gimp   
     color: black;
     text-align: center;
     padding: 10px 0;
